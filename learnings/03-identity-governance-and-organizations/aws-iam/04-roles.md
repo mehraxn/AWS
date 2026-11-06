@@ -5,7 +5,7 @@
 **Assumable AWS identities that deliver temporary credentials for workloads, federation, services, and delegated access**
 
 [![AWS IAM](https://img.shields.io/badge/AWS-IAM%20Roles-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html)
-![CPP](https://img.shields.io/badge/CPP-Cloud%20Practitioner-2EA44F?style=for-the-badge&logo=amazonaws&logoColor=white)
+![CCP](https://img.shields.io/badge/CCP-Cloud%20Practitioner-2EA44F?style=for-the-badge&logo=amazonaws&logoColor=white)
 ![SAA](https://img.shields.io/badge/SAA-Solutions%20Architect-0969DA?style=for-the-badge&logo=amazonaws&logoColor=white)
 [![Reviewed](https://img.shields.io/badge/Reviewed-2026--11--05-555555?style=for-the-badge)](#official-references)
 
@@ -28,7 +28,7 @@
 4. [How role assumption and AWS STS work](#how-role-assumption-and-aws-sts-work)
 5. [Role sessions, capabilities, and restrictions](#role-sessions-capabilities-and-restrictions)
 6. [Use cases and selection guidance](#use-cases-and-selection-guidance)
-7. [CPP essentials](#cpp-essentials)
+7. [CCP essentials](#ccp-essentials)
 8. [SAA architecture and design](#saa-architecture-and-design)
 9. [Role and access comparisons](#role-and-access-comparisons)
 10. [AWS service and workload role patterns](#aws-service-and-workload-role-patterns)
@@ -497,8 +497,8 @@ A role is not automatically the best answer when:
 
 ---
 
-<a id="cpp-essentials"></a>
-## 7. ![CPP](https://img.shields.io/badge/CPP-Cloud%20Practitioner-2EA44F?style=for-the-badge&logo=amazonaws&logoColor=white) CPP essentials
+<a id="ccp-essentials"></a>
+## 7. ![CCP](https://img.shields.io/badge/CCP-Cloud%20Practitioner-2EA44F?style=for-the-badge&logo=amazonaws&logoColor=white) CCP essentials
 
 ### Facts to recognize
 
@@ -534,7 +534,7 @@ A role is not automatically the best answer when:
 | “Third-party vendor serves many customers” | Cross-account role + external ID |
 | “Container application permissions” | ECS task role, not task execution role |
 
-### 30-second CPP summary
+### 30-second CCP summary
 
 An IAM role is an assumable AWS identity. It has trust rules and permissions, but no permanent password or keys. AWS STS or a service integration provides temporary credentials. Use roles for AWS services, applications, federation, temporary elevation, and cross-account access instead of embedding long-term credentials.
 
@@ -1047,18 +1047,18 @@ Review last use and service dependencies. Detach managed policies, delete inline
 
 | # | Incorrect assumption | Correct interpretation and technical reason | Level |
 |---:|---|---|---|
-| 1 | A role has permanent access keys | STS/service integrations issue expiring session credentials | CPP |
-| 2 | A role has a console password | Humans authenticate elsewhere and assume/access the role | CPP |
-| 3 | Roles are only for EC2 | Services, workloads, federation, vendors, and accounts use roles | CPP |
-| 4 | Only AWS services assume roles | IAM/federated principals and other roles can assume when trusted | CPP |
+| 1 | A role has permanent access keys | STS/service integrations issue expiring session credentials | CCP |
+| 2 | A role has a console password | Humans authenticate elsewhere and assume/access the role | CCP |
+| 3 | Roles are only for EC2 | Services, workloads, federation, vendors, and accounts use roles | CCP |
+| 4 | Only AWS services assume roles | IAM/federated principals and other roles can assume when trusted | CCP |
 | 5 | Trust policy grants S3/DynamoDB access | It grants the assumption path; role permissions govern service APIs | Both |
 | 6 | Permissions policies decide who assumes | Trust policy handles principals and assumption conditions | Both |
 | 7 | Trust alone always permits `AssumeRole` | Cross-account callers also need source permission; limits/conditions apply | SAA |
 | 8 | Same-account and cross-account rules are identical | Same-account direct trust can grant without separate identity Allow; cross-account needs both sides | SAA |
-| 9 | STS and IAM roles are the same | STS vends sessions; the IAM role stores trust/permissions | CPP |
+| 9 | STS and IAM roles are the same | STS vends sessions; the IAM role stores trust/permissions | CCP |
 | 10 | Every STS credential is a role session | `GetSessionToken` and `GetFederationToken` create other session types | SAA |
-| 11 | Temporary credentials omit a secret | They contain ID, secret, token, and expiration | CPP |
-| 12 | Temporary credentials cannot be used by CLI | CLI profiles/providers use them routinely | CPP |
+| 11 | Temporary credentials omit a secret | They contain ID, secret, token, and expiration | CCP |
+| 12 | Temporary credentials cannot be used by CLI | CLI profiles/providers use them routinely | CCP |
 | 13 | Successful assumption means resource access | The later service request receives separate authorization | Both |
 | 14 | Session policy adds permission | It narrows role identity-policy permissions | SAA |
 | 15 | Boundary grants its listed actions | It is a maximum on role identity-policy permissions | SAA |
@@ -1145,7 +1145,7 @@ Stop new sessions where needed, narrow or deny role/resource permissions, revoke
 These 32 questions are original study material, not official or recalled AWS exam questions.
 
 <details>
-<summary>Q1 · CPP · What is an IAM role?</summary>
+<summary>Q1 · CCP · What is an IAM role?</summary>
 
 - A. A collection of users
 - B. An assumable AWS identity
@@ -1157,7 +1157,7 @@ These 32 questions are original study material, not official or recalled AWS exa
 
 
 <details>
-<summary>Q2 · CPP · Which credentials are associated permanently with a role?</summary>
+<summary>Q2 · CCP · Which credentials are associated permanently with a role?</summary>
 
 - A. Console password
 - B. Two access keys
@@ -1168,7 +1168,7 @@ These 32 questions are original study material, not official or recalled AWS exa
 </details>
 
 <details>
-<summary>Q3 · CPP · What issues temporary role credentials?</summary>
+<summary>Q3 · CCP · What issues temporary role credentials?</summary>
 
 - A. AWS STS
 - B. Route 53
@@ -1179,7 +1179,7 @@ These 32 questions are original study material, not official or recalled AWS exa
 </details>
 
 <details>
-<summary>Q4 · CPP · Which policy answers “who may assume?”</summary>
+<summary>Q4 · CCP · Which policy answers “who may assume?”</summary>
 
 - A. Trust policy
 - B. S3 lifecycle policy
@@ -1190,7 +1190,7 @@ These 32 questions are original study material, not official or recalled AWS exa
 </details>
 
 <details>
-<summary>Q5 · CPP · EC2 code needs S3 access without embedded keys. Best design?</summary>
+<summary>Q5 · CCP · EC2 code needs S3 access without embedded keys. Best design?</summary>
 
 - A. Root key in user data
 - B. IAM user key in the AMI
@@ -1201,19 +1201,19 @@ These 32 questions are original study material, not official or recalled AWS exa
 </details>
 
 <details>
-<summary>Q6 · CPP · Can an IAM group assume a role?</summary>
+<summary>Q6 · CCP · Can an IAM group assume a role?</summary>
 
 **Answer: No.** A group is not a principal. Its policy can allow member users to request a role, but the users are the callers.
 </details>
 
 <details>
-<summary>Q7 · CPP · Why use cross-account roles?</summary>
+<summary>Q7 · CCP · Why use cross-account roles?</summary>
 
 **Answer:** They provide temporary target-account access without duplicating users or sharing long-term credentials. Target trust and source authorization are still required.
 </details>
 
 <details>
-<summary>Q8 · CPP · Which role does Lambda use while function code runs?</summary>
+<summary>Q8 · CCP · Which role does Lambda use while function code runs?</summary>
 
 - A. Execution role
 - B. IAM group
@@ -1224,13 +1224,13 @@ These 32 questions are original study material, not official or recalled AWS exa
 </details>
 
 <details>
-<summary>Q9 · CPP · Does a trust policy define the role’s DynamoDB actions?</summary>
+<summary>Q9 · CCP · Does a trust policy define the role’s DynamoDB actions?</summary>
 
 **Answer: No.** Trust controls assumption. A permissions policy defines DynamoDB actions; both are needed for a useful role.
 </details>
 
 <details>
-<summary>Q10 · CPP · Workforce users need many accounts. Preferred baseline?</summary>
+<summary>Q10 · CCP · Workforce users need many accounts. Preferred baseline?</summary>
 
 - A. IAM user in each account
 - B. Identity Center with permission sets and account roles
@@ -1241,13 +1241,13 @@ These 32 questions are original study material, not official or recalled AWS exa
 </details>
 
 <details>
-<summary>Q11 · CPP · What is the third component beyond temporary key ID and secret?</summary>
+<summary>Q11 · CCP · What is the third component beyond temporary key ID and secret?</summary>
 
 **Answer:** The session token. Omitting it makes signed requests fail; temporary credentials also have an expiration.
 </details>
 
 <details>
-<summary>Q12 · CPP · Are roles only for AWS services?</summary>
+<summary>Q12 · CCP · Are roles only for AWS services?</summary>
 
 **Answer: No.** IAM/federated principals, external accounts, workloads, and AWS services can use roles when the trust and workflow support them.
 </details>
@@ -1601,10 +1601,10 @@ Session limits, service principals, supported condition keys, EKS platforms, ser
 
 <div align="center">
 
-![CPP](https://img.shields.io/badge/CPP-Roles%20provide%20trusted%20temporary%20access-2EA44F?style=for-the-badge)
+![CCP](https://img.shields.io/badge/CCP-Roles%20provide%20trusted%20temporary%20access-2EA44F?style=for-the-badge)
 
 ![SAA](https://img.shields.io/badge/SAA-Separate%20trust%2C%20sessions%2C%20permissions%2C%20resources%20and%20guardrails-0969DA?style=for-the-badge)
 
-**For CPP, recognize roles as the temporary-access identity. For SAA, reason through who obtains the session, what it can do, which controls limit it, and how it is audited and revoked.**
+**For CCP, recognize roles as the temporary-access identity. For SAA, reason through who obtains the session, what it can do, which controls limit it, and how it is audited and revoked.**
 
 </div>

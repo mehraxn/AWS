@@ -5,7 +5,7 @@
 ### Complete GitHub Study Guide · Cloud Practitioner + Solutions Architect – Associate
 
 [![AWS IAM](https://img.shields.io/badge/AWS-IAM-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white)](https://aws.amazon.com/iam/)
-![CPP](https://img.shields.io/badge/CPP-Cloud%20Practitioner-2EA44F?style=for-the-badge&logo=amazonaws&logoColor=white)
+![CCP](https://img.shields.io/badge/CCP-Cloud%20Practitioner-2EA44F?style=for-the-badge&logo=amazonaws&logoColor=white)
 ![SAA](https://img.shields.io/badge/SAA-Solutions%20Architect-0969DA?style=for-the-badge&logo=amazonaws&logoColor=white)
 [![Reviewed](https://img.shields.io/badge/Reviewed-2026--11--05-555555?style=for-the-badge)](#official-references)
 
@@ -401,7 +401,7 @@ AWS STS issues the temporary credentials; the IAM role defines trust and role pe
 <a id="ccp-essentials"></a>
 ## 7. 🟢 Cloud Practitioner (CCP) essentials
 
-![CPP](https://img.shields.io/badge/CPP-Cloud%20Practitioner-2EA44F?style=for-the-badge&logo=amazonaws&logoColor=white)
+![CCP](https://img.shields.io/badge/CCP-Cloud%20Practitioner-2EA44F?style=for-the-badge&logo=amazonaws&logoColor=white)
 
 ### Fundamental facts to memorize
 
@@ -1246,7 +1246,7 @@ AWS capabilities, managed policies, supported resources, pricing, and exam guide
 
 <div align="center">
 
-![CPP](https://img.shields.io/badge/CPP-Recognize%20identities%2C%20roles%2C%20policies%2C%20MFA%20and%20least%20privilege-2EA44F?style=for-the-badge)
+![CCP](https://img.shields.io/badge/CCP-Recognize%20identities%2C%20roles%2C%20policies%2C%20MFA%20and%20least%20privilege-2EA44F?style=for-the-badge)
 
 ![SAA](https://img.shields.io/badge/SAA-Reason%20about%20trust%2C%20effective%20permissions%20and%20cross--account%20design-0969DA?style=for-the-badge)
 

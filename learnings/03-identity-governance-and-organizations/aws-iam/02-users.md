@@ -4,7 +4,7 @@
 
 **Account-local identities, long-term credentials, least privilege, and modern alternatives**
 
-![CPP](https://img.shields.io/badge/CPP-Cloud%20Practitioner-2EA44F?style=for-the-badge&logo=amazonaws&logoColor=white)
+![CCP](https://img.shields.io/badge/CCP-Cloud%20Practitioner-2EA44F?style=for-the-badge&logo=amazonaws&logoColor=white)
 ![SAA](https://img.shields.io/badge/SAA-Solutions%20Architect-0969DA?style=for-the-badge&logo=amazonaws&logoColor=white)
 
 [IAM index](README.md) · [IAM overview](01-overview.md) · [IAM groups](03-groups.md) · [IAM roles](04-roles.md)
@@ -24,7 +24,7 @@
 4. [How an IAM user works](#how-an-iam-user-works)
 5. [Capabilities, defaults, and restrictions](#capabilities-defaults-and-restrictions)
 6. [When to use—and not use—an IAM user](#when-to-use-and-not-use-an-iam-user)
-7. [CPP essentials](#cpp-essentials)
+7. [CCP essentials](#ccp-essentials)
 8. [SAA deep dive](#saa-deep-dive)
 9. [Comparisons](#comparisons)
 10. [Integration and architecture patterns](#integration-and-architecture-patterns)
@@ -252,8 +252,8 @@ IAM users are not deprecated or universally prohibited. They are higher-lifecycl
 
 ---
 
-<a id="cpp-essentials"></a>
-## 7. ![CPP](https://img.shields.io/badge/CPP-Cloud%20Practitioner-2EA44F?style=for-the-badge&logo=amazonaws&logoColor=white) CPP essentials
+<a id="ccp-essentials"></a>
+## 7. ![CCP](https://img.shields.io/badge/CCP-Cloud%20Practitioner-2EA44F?style=for-the-badge&logo=amazonaws&logoColor=white) CCP essentials
 
 - A user is an identity inside **one account** and has **no permissions by default**.
 - Passwords are for console sign-in; access keys sign programmatic requests.
@@ -555,19 +555,19 @@ In the console, use **Users**, **Permissions**, **Groups**, **Tags**, **Security
 
 | # | Incorrect assumption | Correct explanation and reason | Level |
 |---:|---|---|---|
-| 1 | New users can use AWS immediately | No permissions by default; they may also have no credentials | CPP |
-| 2 | Every user joins a default group | Membership is explicit; no automatic all-users group | CPP |
-| 3 | Groups can contain groups | Groups contain users only | CPP |
+| 1 | New users can use AWS immediately | No permissions by default; they may also have no credentials | CCP |
+| 2 | Every user joins a default group | Membership is explicit; no automatic all-users group | CCP |
+| 3 | Groups can contain groups | Groups contain users only | CCP |
 | 4 | Every employee should get a user | Prefer federation/Identity Center | Both |
 | 5 | CLI always needs user keys | It can use Identity Center, roles, metadata, web identity, and other providers | Both |
-| 6 | Password equals access key | Separate credentials and paths | CPP |
+| 6 | Password equals access key | Separate credentials and paths | CCP |
 | 7 | Password expiry disables the user | Active keys remain separate | Both |
-| 8 | MFA grants permissions | It strengthens authentication only | CPP |
+| 8 | MFA grants permissions | It strengthens authentication only | CCP |
 | 9 | Every MFA method supplies STS MFA context | FIDO/passkey and TOTP flows differ | SAA |
 | 10 | Long-term key calls have MFA context | They do not; use supported temporary-credential flow | SAA |
-| 11 | Secret keys can be viewed later | Shown once; replace when lost | CPP |
-| 12 | Two keys double permissions | Both authenticate the same user | CPP |
-| 13 | Inactive equals deleted | Inactive is reversible; deletion is permanent | CPP |
+| 11 | Secret keys can be viewed later | Shown once; replace when lost | CCP |
+| 12 | Two keys double permissions | Both authenticate the same user | CCP |
+| 13 | Inactive equals deleted | Inactive is reversible; deletion is permanent | CCP |
 | 14 | Environment variables make keys temporary | Storage does not change lifetime | Both |
 | 15 | Named profiles encrypt keys | Profiles organize plaintext settings | SAA |
 | 16 | Group policy order resolves conflicts | No order; allows combine and explicit deny wins | Both |
@@ -576,13 +576,13 @@ In the console, use **Users**, **Permissions**, **Groups**, **Tags**, **Security
 | 19 | SCP grants access | It is a principal-side maximum | Both |
 | 20 | RCP is a user policy | It limits supported resources and never grants | SAA |
 | 21 | `AdministratorAccess` defeats all denies | Guardrails/resource controls/explicit denies still apply | SAA |
-| 22 | Users are Regional | They are account-global | CPP |
+| 22 | Users are Regional | They are account-global | CCP |
 | 23 | A user works automatically in every account | It belongs to one account; use cross-account roles | Both |
 | 24 | Deactivating a key ends every session | Issued temporary credentials may need separate containment | SAA |
 | 25 | CloudTrail lists possible permissions | It records activity | SAA |
 | 26 | “Never used” proves safe deletion | Validate owner/consumers and stage inactivation | SAA |
 | 27 | Deleting a user deletes managed policies | Attachments go; reusable managed policies remain | SAA |
-| 28 | Shared users simplify auditing | They destroy individual attribution | CPP |
+| 28 | Shared users simplify auditing | They destroy individual attribution | CCP |
 
 ---
 
@@ -637,7 +637,7 @@ Federate through Identity Center, assign permission sets, and use temporary cred
 These 30 original questions are study material, not leaked exam content.
 
 <details>
-<summary>Q1 · CPP · What permissions does a new IAM user have?</summary>
+<summary>Q1 · CCP · What permissions does a new IAM user have?</summary>
 
 - A. Read-only
 - B. Billing
@@ -648,7 +648,7 @@ These 30 original questions are study material, not leaked exam content.
 </details>
 
 <details>
-<summary>Q2 · CPP · Which credential supports IAM-user console sign-in?</summary>
+<summary>Q2 · CCP · Which credential supports IAM-user console sign-in?</summary>
 
 - A. Console password
 - B. Secret key alone
@@ -659,7 +659,7 @@ These 30 original questions are study material, not leaked exam content.
 </details>
 
 <details>
-<summary>Q3 · CPP · Which statement describes an IAM group?</summary>
+<summary>Q3 · CCP · Which statement describes an IAM group?</summary>
 
 - A. It signs in
 - B. It contains users and helps assign permissions
@@ -670,7 +670,7 @@ These 30 original questions are study material, not leaked exam content.
 </details>
 
 <details>
-<summary>Q4 · CPP · What does MFA do?</summary>
+<summary>Q4 · CCP · What does MFA do?</summary>
 
 - A. Grants admin
 - B. Adds an authentication factor
@@ -681,7 +681,7 @@ These 30 original questions are study material, not leaked exam content.
 </details>
 
 <details>
-<summary>Q5 · CPP · Employees need five accounts. Preferred baseline?</summary>
+<summary>Q5 · CCP · Employees need five accounts. Preferred baseline?</summary>
 
 - A. Five users each
 - B. Shared root
@@ -692,7 +692,7 @@ These 30 original questions are study material, not leaked exam content.
 </details>
 
 <details>
-<summary>Q6 · CPP · Which service records IAM-user API activity?</summary>
+<summary>Q6 · CCP · Which service records IAM-user API activity?</summary>
 
 - A. CloudTrail
 - B. Route 53
@@ -703,13 +703,13 @@ These 30 original questions are study material, not leaked exam content.
 </details>
 
 <details>
-<summary>Q7 · CPP · Can a user have both password and keys?</summary>
+<summary>Q7 · CCP · Can a user have both password and keys?</summary>
 
 **Answer: Yes, if both are required.** They are independent. “Every user needs both” and “a user must have at least one” are false.
 </details>
 
 <details>
-<summary>Q8 · CPP · A secret access key is lost. What now?</summary>
+<summary>Q8 · CCP · A secret access key is lost. What now?</summary>
 
 - A. Ask AWS to reveal it
 - B. Derive it from its ID
@@ -720,7 +720,7 @@ These 30 original questions are study material, not leaked exam content.
 </details>
 
 <details>
-<summary>Q9 · CPP · Safest EC2-to-S3 identity?</summary>
+<summary>Q9 · CCP · Safest EC2-to-S3 identity?</summary>
 
 - A. Root key
 - B. User key in AMI
@@ -731,13 +731,13 @@ These 30 original questions are study material, not leaked exam content.
 </details>
 
 <details>
-<summary>Q10 · CPP · Is an IAM user Regional?</summary>
+<summary>Q10 · CCP · Is an IAM user Regional?</summary>
 
 **Answer: No.** Users are global within the account. Recreating one per Region is unnecessary; target services can still be Regional.
 </details>
 
 <details>
-<summary>Q11 · CPP · Which report summarizes password, MFA, and key status?</summary>
+<summary>Q11 · CCP · Which report summarizes password, MFA, and key status?</summary>
 
 - A. IAM credential report
 - B. VPC flow log
@@ -748,7 +748,7 @@ These 30 original questions are study material, not leaked exam content.
 </details>
 
 <details>
-<summary>Q12 · CPP · Why not share root for daily administration?</summary>
+<summary>Q12 · CCP · Why not share root for daily administration?</summary>
 
 **Answer:** It has account-owner capabilities, widens blast radius, and undermines delegation/accountability. Federated/role access is preferred; “root is simplest” ignores security.
 </details>
@@ -1024,7 +1024,7 @@ Access methods, MFA, quotas, managed policies, pricing, and exam guides can chan
 
 <div align="center">
 
-![CPP](https://img.shields.io/badge/CPP-Recognize%20users%2C%20credentials%2C%20MFA%20and%20least%20privilege-2EA44F?style=for-the-badge)
+![CCP](https://img.shields.io/badge/CCP-Recognize%20users%2C%20credentials%2C%20MFA%20and%20least%20privilege-2EA44F?style=for-the-badge)
 
 ![SAA](https://img.shields.io/badge/SAA-Prefer%20federation%2C%20roles%2C%20temporary%20credentials%20and%20full%20policy%20evaluation-0969DA?style=for-the-badge)
 

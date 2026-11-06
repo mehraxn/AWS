@@ -4,7 +4,7 @@
 
 **Account-local permission containers for IAM users—not identities, credentials, or roles**
 
-![CPP](https://img.shields.io/badge/CPP-Cloud%20Practitioner-2EA44F?style=for-the-badge&logo=amazonaws&logoColor=white)
+![CCP](https://img.shields.io/badge/CCP-Cloud%20Practitioner-2EA44F?style=for-the-badge&logo=amazonaws&logoColor=white)
 ![SAA](https://img.shields.io/badge/SAA-Solutions%20Architect-0969DA?style=for-the-badge&logo=amazonaws&logoColor=white)
 
 [IAM index](README.md) · [IAM overview](01-overview.md) · [IAM users](02-users.md) · [IAM roles](04-roles.md)
@@ -24,7 +24,7 @@
 4. [How groups work and change](#how-groups-work-and-change)
 5. [Permission inheritance and effective access](#permission-inheritance-and-effective-access)
 6. [Group policies and capabilities](#group-policies-and-capabilities)
-7. [CPP essentials](#cpp-essentials)
+7. [CCP essentials](#ccp-essentials)
 8. [SAA deep dive](#saa-deep-dive)
 9. [Comparisons](#comparisons)
 10. [Identity Center and architecture patterns](#identity-center-and-architecture-patterns)
@@ -329,8 +329,8 @@ The names are illustrative. Encrypted objects can also require KMS permissions a
 
 ---
 
-<a id="cpp-essentials"></a>
-## 7. ![CPP](https://img.shields.io/badge/CPP-Cloud%20Practitioner-2EA44F?style=for-the-badge&logo=amazonaws&logoColor=white) CPP essentials
+<a id="ccp-essentials"></a>
+## 7. ![CCP](https://img.shields.io/badge/CCP-Cloud%20Practitioner-2EA44F?style=for-the-badge&logo=amazonaws&logoColor=white) CCP essentials
 
 ### Facts to recognize
 
@@ -358,7 +358,7 @@ The names are illustrative. Encrypted objects can also require KMS permissions a
 | “No policy permits the action” | Implicit deny |
 | “Group removed but access remains” | Search other permission paths |
 
-### 30-second CPP summary
+### 30-second CCP summary
 
 An IAM group is a collection of account-local IAM users used to share permissions. It cannot sign in, contain roles/groups, or be assumed. Users can join multiple groups, so applicable allows accumulate, but explicit denies still win. Use Identity Center rather than account-local groups for a modern multi-account workforce.
 
@@ -663,19 +663,19 @@ Detaching a customer managed policy does not delete the policy. Deleting the gro
 
 | # | Incorrect assumption | Correct interpretation and reason | Level |
 |---:|---|---|---|
-| 1 | Every user must join a group | Membership is optional; no permissions are automatic | CPP |
-| 2 | IAM creates an all-users group | No default group exists | CPP |
-| 3 | Groups can contain groups | IAM user groups cannot nest | CPP |
-| 4 | Groups can contain roles | They contain IAM users only | CPP |
-| 5 | A group has login credentials | It never authenticates or signs in | CPP |
+| 1 | Every user must join a group | Membership is optional; no permissions are automatic | CCP |
+| 2 | IAM creates an all-users group | No default group exists | CCP |
+| 3 | Groups can contain groups | IAM user groups cannot nest | CCP |
+| 4 | Groups can contain roles | They contain IAM users only | CCP |
+| 5 | A group has login credentials | It never authenticates or signs in | CCP |
 | 6 | A group can assume a role | Only a principal assumes; group policy may authorize member users to request it | Both |
 | 7 | A group is a resource-policy principal | AWS does not support groups in `Principal` | SAA |
 | 8 | First-listed group wins | Policy order and console order do not decide access | Both |
-| 9 | A user can join only one group | Current quota is 10 groups per user | CPP |
+| 9 | A user can join only one group | Current quota is 10 groups per user | CCP |
 | 10 | Allows from multiple groups do not combine | Applicable identity-policy allows can accumulate | Both |
 | 11 | A group Allow overrides any deny | An applicable explicit deny wins | Both |
 | 12 | Removing one group removes all access | Other groups/direct/resource grants or sessions can remain | Both |
-| 13 | Group permissions are always admin | Policies define scope; groups have no inherent permissions | CPP |
+| 13 | Group permissions are always admin | Policies define scope; groups have no inherent permissions | CCP |
 | 14 | A group can have a permissions boundary | Boundaries attach to users or roles, not groups | SAA |
 | 15 | Boundary permissions add to group permissions | A boundary limits identity grants and grants nothing | SAA |
 | 16 | An SCP grants group members access | SCPs are maximum-permission guardrails | Both |
@@ -684,10 +684,10 @@ Detaching a customer managed policy does not delete the policy. Deleting the gro
 | 19 | Group membership bypasses bucket/key policies | Resource/service policy requirements still apply | SAA |
 | 20 | Group inline policies are reusable | They are embedded in one group | Both |
 | 21 | Deleting a group deletes attached managed policies | Managed policies survive detachment; inline policies do not | SAA |
-| 22 | Deleting a group deletes its users | It removes membership, not user identities | CPP |
+| 22 | Deleting a group deletes its users | It removes membership, not user identities | CCP |
 | 23 | IAM group equals Identity Center group | They have different identity stores, assignments, and scope | Both |
-| 24 | IAM groups span AWS accounts | Each belongs to one account | CPP |
-| 25 | IAM group equals Organizations OU | Groups contain users; OUs organize accounts/OUs | CPP |
+| 24 | IAM groups span AWS accounts | Each belongs to one account | CCP |
+| 25 | IAM group equals Organizations OU | Groups contain users; OUs organize accounts/OUs | CCP |
 | 26 | Groups are always best for employees | Identity Center/federation is preferred for modern workforce access | Both |
 | 27 | Shared group policies guarantee least privilege | Policy scope and combined memberships still require review | Both |
 | 28 | Removing membership immediately revokes issued role sessions | Existing temporary sessions follow their own expiry/controls | SAA |
@@ -745,7 +745,7 @@ Policies elsewhere may still authorize administration of the old group ARN/name 
 These 28 original questions are study material, not official or recalled AWS exam questions.
 
 <details>
-<summary>Q1 · CPP · What is the primary purpose of an IAM group?</summary>
+<summary>Q1 · CCP · What is the primary purpose of an IAM group?</summary>
 
 - A. Authenticate AWS services
 - B. Assign shared permissions to IAM users
@@ -756,7 +756,7 @@ These 28 original questions are study material, not official or recalled AWS exa
 </details>
 
 <details>
-<summary>Q2 · CPP · Which member can an IAM group contain?</summary>
+<summary>Q2 · CCP · Which member can an IAM group contain?</summary>
 
 - A. IAM user
 - B. IAM role
@@ -767,13 +767,13 @@ These 28 original questions are study material, not official or recalled AWS exa
 </details>
 
 <details>
-<summary>Q3 · CPP · Does AWS automatically place every user in a default group?</summary>
+<summary>Q3 · CCP · Does AWS automatically place every user in a default group?</summary>
 
 **Answer: No.** There is no automatic all-users group. An administrator must create a group and add each user; assuming automatic baseline access is the trap.
 </details>
 
 <details>
-<summary>Q4 · CPP · Can an IAM group sign in to the console?</summary>
+<summary>Q4 · CCP · Can an IAM group sign in to the console?</summary>
 
 - A. Yes, with the group password
 - B. Yes, after MFA
@@ -784,13 +784,13 @@ These 28 original questions are study material, not official or recalled AWS exa
 </details>
 
 <details>
-<summary>Q5 · CPP · Can one user belong to several IAM groups?</summary>
+<summary>Q5 · CCP · Can one user belong to several IAM groups?</summary>
 
 **Answer: Yes, within the current quota.** Permissions from applicable group policies can combine. “Only one group” confuses membership with a single job title.
 </details>
 
 <details>
-<summary>Q6 · CPP · Which is assumed temporarily?</summary>
+<summary>Q6 · CCP · Which is assumed temporarily?</summary>
 
 - A. IAM group
 - B. IAM role
@@ -801,7 +801,7 @@ These 28 original questions are study material, not official or recalled AWS exa
 </details>
 
 <details>
-<summary>Q7 · CPP · Ten account-local users need the same policy. Best fit?</summary>
+<summary>Q7 · CCP · Ten account-local users need the same policy. Best fit?</summary>
 
 - A. Share root
 - B. IAM group
@@ -812,19 +812,19 @@ These 28 original questions are study material, not official or recalled AWS exa
 </details>
 
 <details>
-<summary>Q8 · CPP · What remains after a group is deleted?</summary>
+<summary>Q8 · CCP · What remains after a group is deleted?</summary>
 
 **Answer:** Its IAM users and detached reusable managed policies remain; group inline policies do not. “Users are deleted too” confuses membership with identity lifecycle.
 </details>
 
 <details>
-<summary>Q9 · CPP · Groups A and B allow different actions. What normally happens?</summary>
+<summary>Q9 · CCP · Groups A and B allow different actions. What normally happens?</summary>
 
 **Answer:** Both applicable identity-policy allows can contribute, assuming their resources/conditions match and no deny or limiting control blocks them. IAM does not choose the first group.
 </details>
 
 <details>
-<summary>Q10 · CPP · Best workforce mechanism across many accounts?</summary>
+<summary>Q10 · CCP · Best workforce mechanism across many accounts?</summary>
 
 - A. Duplicate IAM groups/users
 - B. Identity Center groups and permission sets
@@ -835,13 +835,13 @@ These 28 original questions are study material, not official or recalled AWS exa
 </details>
 
 <details>
-<summary>Q11 · CPP · Can a group have an access key?</summary>
+<summary>Q11 · CCP · Can a group have an access key?</summary>
 
 **Answer: No.** Access keys belong to supported identities such as IAM users or temporary sessions, not permission containers.
 </details>
 
 <details>
-<summary>Q12 · CPP · IAM group and Organizations OU differ how?</summary>
+<summary>Q12 · CCP · IAM group and Organizations OU differ how?</summary>
 
 **Answer:** A group contains IAM users in one account; an OU organizes AWS accounts or child OUs for governance. Calling both “groups” does not make them interchangeable.
 </details>
@@ -1060,7 +1060,7 @@ Applicable explicit Deny wins.
 Boundary/SCP/RCP limit; none grants.
 Removing membership removes one permission source—not necessarily all access.
 
-CPP keywords: users, shared permissions, no nesting, no credentials.
+CCP keywords: users, shared permissions, no nesting, no credentials.
 SAA keywords: effective permissions, union, boundary, SCP/RCP, cross-account, Identity Center.
 ```
 
@@ -1127,7 +1127,7 @@ Quotas, Identity Center capabilities, policy behavior, and exam guides can chang
 
 <div align="center">
 
-![CPP](https://img.shields.io/badge/CPP-Groups%20share%20permissions%20with%20IAM%20users-2EA44F?style=for-the-badge)
+![CCP](https://img.shields.io/badge/CCP-Groups%20share%20permissions%20with%20IAM%20users-2EA44F?style=for-the-badge)
 
 ![SAA](https://img.shields.io/badge/SAA-Evaluate%20all%20grants%2C%20denies%2C%20guardrails%20and%20modern%20alternatives-0969DA?style=for-the-badge)
 

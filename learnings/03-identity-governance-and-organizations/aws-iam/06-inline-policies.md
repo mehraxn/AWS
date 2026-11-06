@@ -5,13 +5,13 @@
 **Identity-owned permission documents for deliberately coupled authorization**
 
 [![AWS IAM](https://img.shields.io/badge/AWS-IAM%20Inline%20Policies-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white)](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html)
-![CPP](https://img.shields.io/badge/CPP-Cloud%20Practitioner-2EA44F?style=for-the-badge&logo=amazonaws&logoColor=white)
+![CCP](https://img.shields.io/badge/CCP-Cloud%20Practitioner-2EA44F?style=for-the-badge&logo=amazonaws&logoColor=white)
 ![SAA](https://img.shields.io/badge/SAA-Solutions%20Architect-0969DA?style=for-the-badge&logo=amazonaws&logoColor=white)
 [![Reviewed](https://img.shields.io/badge/Reviewed-2026--11--05-555555?style=for-the-badge)](#official-references)
 
 **One sentence to remember:** An IAM inline policy is a JSON permissions document embedded in exactly one IAM user, group, or role and deleted with that identity, although its permissions can affect group members or role sessions.
 
-[IAM index](README.md) · [IAM overview](01-overview.md) · [Previous: customer managed policies](05-customer-managed-policies.md) · [Next: permission boundaries](07-permission-boundaries.md)
+[IAM index](README.md) · [IAM overview](01-overview.md) · [Previous: customer managed policies](05-customer-managed-policies.md) · [Next: ReadOnlyAccess](07-read-only-access-policy.md)
 
 </div>
 
@@ -28,7 +28,7 @@
 4. [IAM JSON and worked examples](#iam-json-and-worked-examples)
 5. [Lifecycle, modification, and deletion](#lifecycle-modification-and-deletion)
 6. [Use cases and selection guidance](#use-cases-and-selection-guidance)
-7. [CPP essentials](#cpp-essentials)
+7. [CCP essentials](#ccp-essentials)
 8. [SAA architecture and effective permissions](#saa-architecture-and-effective-permissions)
 9. [Policy and feature comparisons](#policy-and-feature-comparisons)
 10. [Integration and infrastructure-as-code patterns](#integration-and-infrastructure-as-code-patterns)
@@ -393,10 +393,10 @@ The right question is not “Is unique always inline?” It is “Does strict ow
 
 ---
 
-<a id="cpp-essentials"></a>
-## 7. CPP essentials
+<a id="ccp-essentials"></a>
+## 7. CCP essentials
 
-![CPP](https://img.shields.io/badge/CPP-Recognize%20ownership%2C%20scope%2C%20and%20lifecycle-2EA44F?style=for-the-badge)
+![CCP](https://img.shields.io/badge/CCP-Recognize%20ownership%2C%20scope%2C%20and%20lifecycle-2EA44F?style=for-the-badge)
 
 For Cloud Practitioner preparation, know these points:
 
@@ -411,7 +411,7 @@ For Cloud Practitioner preparation, know these points:
 - An applicable explicit deny overrides an allow.
 - IAM and STS have no additional charge, though actions on other services can incur charges.
 
-**CPP recognition clue:** “permission belongs only to this identity and should disappear with it” points toward an inline policy. “Reusable across identities” points toward a managed policy.
+**CCP recognition clue:** “permission belongs only to this identity and should disappear with it” points toward an inline policy. “Reusable across identities” points toward a managed policy.
 
 ---
 
@@ -709,7 +709,7 @@ Use equivalent `user` or `group` command families for those parents. `Put*Policy
 | 1 | Inline policies belong only to users. | Users, groups, and roles support them; service-linked roles are customer-editing exceptions. | Both |
 | 2 | Groups cannot have inline policies. | A group can own one, and every current member can inherit its permissions. | Both |
 | 3 | Roles cannot have inline policies. | Roles support embedded permissions policies separate from their trust policies. | Both |
-| 4 | Inline means used once. | It remains until updated, deleted, or its parent is deleted. | CPP |
+| 4 | Inline means used once. | It remains until updated, deleted, or its parent is deleted. | CCP |
 | 5 | Inline means temporary. | Storage is identity-coupled; temporary credentials come from STS/session mechanisms. | Both |
 | 6 | One inline policy can be attached to many identities. | It is embedded in one parent; equivalent copies are distinct policies. | Both |
 | 7 | It is a standalone managed policy. | It has no independent managed-policy object or attachment list. | Both |
@@ -724,7 +724,7 @@ Use equivalent `user` or `group` command families for those parents. `Put*Policy
 | 16 | A group inline policy affects only the group object. | Group permissions contribute to every current member's identity authorization. | Both |
 | 17 | Removing Alice deletes the group's inline policy. | It only removes Alice's membership-derived permission; group/policy remain. | Both |
 | 18 | Deleting the identity preserves the policy for reuse. | The embedded policy is deleted with its parent. | Both |
-| 19 | Inline policies grant administrator access by default. | They grant only matching `Allow` statements and may contain only denies. | CPP |
+| 19 | Inline policies grant administrator access by default. | They grant only matching `Allow` statements and may contain only denies. | CCP |
 | 20 | An inline allow overrides explicit deny. | Any applicable explicit deny wins. Policy storage gives no priority. | Both |
 | 21 | Inline policies outrank managed policies. | Identity-policy statements are evaluated together; no inline precedence exists. | SAA |
 | 22 | Inline policies bypass permissions boundaries. | A boundary constrains identity-policy grants for its user/role path. | SAA |
@@ -765,7 +765,7 @@ These are original study traps, not claims about exact AWS exam questions.
 These are original educational questions, not official exam items.
 
 <details>
-<summary>Q1 · CPP · Which identities support inline policies?</summary>
+<summary>Q1 · CCP · Which identities support inline policies?</summary>
 
 - A. Users only
 - B. Users and groups only
@@ -776,37 +776,37 @@ These are original educational questions, not official exam items.
 </details>
 
 <details>
-<summary>Q2 · CPP · What does “embedded” mean?</summary>
+<summary>Q2 · CCP · What does “embedded” mean?</summary>
 
 **Answer:** The document is stored as part of one parent IAM identity rather than as an independently attachable managed-policy resource. It is still evaluated with other policies.
 </details>
 
 <details>
-<summary>Q3 · CPP · Does inline mean temporary or one-time?</summary>
+<summary>Q3 · CCP · Does inline mean temporary or one-time?</summary>
 
 **Answer: No.** It persists until replaced/deleted or the parent is deleted. STS credentials and sessions supply temporary access, not the inline storage model.
 </details>
 
 <details>
-<summary>Q4 · CPP · Five users join a group with one inline policy. Who can inherit it?</summary>
+<summary>Q4 · CCP · Five users join a group with one inline policy. Who can inherit it?</summary>
 
 **Answer:** All five current members. One-to-one describes ownership by one group, not a one-person audience; other authorization controls still apply.
 </details>
 
 <details>
-<summary>Q5 · CPP · Alice leaves the group. Is the group policy deleted?</summary>
+<summary>Q5 · CCP · Alice leaves the group. Is the group policy deleted?</summary>
 
 **Answer: No.** Alice stops receiving group-derived permissions, but the group and its policy continue for remaining members. Deleting the group deletes its inline policy.
 </details>
 
 <details>
-<summary>Q6 · CPP · What happens to a user inline policy when its user is deleted?</summary>
+<summary>Q6 · CCP · What happens to a user inline policy when its user is deleted?</summary>
 
 **Answer:** It is deleted with the user. It does not become a standalone managed policy or remain attachable.
 </details>
 
 <details>
-<summary>Q7 · CPP · Twenty employees need identical permissions. Best default choice?</summary>
+<summary>Q7 · CCP · Twenty employees need identical permissions. Best default choice?</summary>
 
 - A. Twenty copied user inline policies
 - B. One reviewed managed policy attached to a group
@@ -817,19 +817,19 @@ These are original educational questions, not official exam items.
 </details>
 
 <details>
-<summary>Q8 · CPP · Does an inline policy have a separate managed-policy ARN?</summary>
+<summary>Q8 · CCP · Does an inline policy have a separate managed-policy ARN?</summary>
 
 **Answer: No.** Retrieve it by parent identity and policy name. Managed policies are the standalone ARN-addressable resources.
 </details>
 
 <details>
-<summary>Q9 · CPP · Can an inline policy contain an explicit Deny?</summary>
+<summary>Q9 · CCP · Can an inline policy contain an explicit Deny?</summary>
 
 **Answer: Yes.** It supports normal IAM permission statements. A deny grants nothing and overrides matching allows when applicable.
 </details>
 
 <details>
-<summary>Q10 · CPP · Is IAM charged per inline policy?</summary>
+<summary>Q10 · CCP · Is IAM charged per inline policy?</summary>
 
 **Answer: No additional IAM charge.** Authorized use of other AWS services can incur their normal charges, and governance still has operational cost.
 </details>
@@ -1139,7 +1139,7 @@ Service action/resource/condition support, quotas, CloudFormation behavior, orga
 | IAM groups | [IAM groups](03-groups.md) |
 | IAM roles | [IAM roles](04-roles.md) |
 | Reusable custom policies | [Customer managed policies](05-customer-managed-policies.md) |
-| Next topic | [Permissions boundaries](07-permission-boundaries.md) |
+| Next topic | [ReadOnlyAccess managed policy](07-read-only-access-policy.md) |
 | Policy analysis | [IAM Access Analyzer](09-access-analyzer.md) |
 
 [Back to IAM index](README.md) · [Back to category](../README.md) · [Repository home](../../README.md)
@@ -1151,10 +1151,10 @@ Service action/resource/condition support, quotas, CloudFormation behavior, orga
 
 <div align="center">
 
-![CPP](https://img.shields.io/badge/CPP-Embedded%2C%20one%20owner%2C%20same%20lifecycle-2EA44F?style=for-the-badge)
+![CCP](https://img.shields.io/badge/CCP-Embedded%2C%20one%20owner%2C%20same%20lifecycle-2EA44F?style=for-the-badge)
 
 ![SAA](https://img.shields.io/badge/SAA-Couple%20deliberately%2C%20evaluate%20completely-0969DA?style=for-the-badge)
 
-**For CPP, recognize what inline policies are and where they live. For SAA, choose lifecycle coupling deliberately, protect modification paths, and reason across every authorization control.**
+**For CCP, recognize what inline policies are and where they live. For SAA, choose lifecycle coupling deliberately, protect modification paths, and reason across every authorization control.**
 
 </div>

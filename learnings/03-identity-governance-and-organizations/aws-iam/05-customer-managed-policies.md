@@ -5,7 +5,7 @@
 **Reusable, customer-controlled identity policies for precise AWS authorization**
 
 [![AWS IAM](https://img.shields.io/badge/AWS-Customer%20Managed%20Policies-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white)](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
-![CPP](https://img.shields.io/badge/CPP-Cloud%20Practitioner-2EA44F?style=for-the-badge&logo=amazonaws&logoColor=white)
+![CCP](https://img.shields.io/badge/CCP-Cloud%20Practitioner-2EA44F?style=for-the-badge&logo=amazonaws&logoColor=white)
 ![SAA](https://img.shields.io/badge/SAA-Solutions%20Architect-0969DA?style=for-the-badge&logo=amazonaws&logoColor=white)
 [![Reviewed](https://img.shields.io/badge/Reviewed-2026--11--05-555555?style=for-the-badge)](#official-references)
 
@@ -30,7 +30,7 @@
 4. [How customer managed policies work](#how-customer-managed-policies-work)
 5. [Managed-policy versioning and change behavior](#managed-policy-versioning-and-change-behavior)
 6. [Use cases and selection guidance](#use-cases-and-selection-guidance)
-7. [CPP essentials](#cpp-essentials)
+7. [CCP essentials](#ccp-essentials)
 8. [SAA architecture and effective permissions](#saa-architecture-and-effective-permissions)
 9. [Policy and feature comparisons](#policy-and-feature-comparisons)
 10. [Attachment, boundaries, and multi-account patterns](#attachment-boundaries-and-multi-account-patterns)
@@ -420,8 +420,8 @@ Do not choose a customer managed policy to define role trust, replace a required
 
 ---
 
-<a id="cpp-essentials"></a>
-## 7. ![CPP](https://img.shields.io/badge/CPP-Cloud%20Practitioner-2EA44F?style=for-the-badge&logo=amazonaws&logoColor=white) CPP essentials
+<a id="ccp-essentials"></a>
+## 7. ![CCP](https://img.shields.io/badge/CCP-Cloud%20Practitioner-2EA44F?style=for-the-badge&logo=amazonaws&logoColor=white) CCP essentials
 
 ### Facts to memorize
 
@@ -457,7 +457,7 @@ Do not choose a customer managed policy to define role trust, replace a required
 
 **Keywords:** `customer controlled` · `standalone` · `reusable` · `attachment` · `JSON` · `least privilege` · `default version` · `rollback` · `central update` · `permissions boundary`
 
-### 30-second CPP summary
+### 30-second CCP summary
 
 A customer managed policy is a reusable IAM permissions policy created in your account. Attach it to users, groups, or roles when several identities need the same custom permissions. AWS controls AWS managed policies; an inline policy belongs to one identity. Only the customer policy's default saved version is operative, and other authorization controls still apply.
 
@@ -826,14 +826,14 @@ Equivalent attachment operations exist for users and groups. Prefer group/role a
 
 | # | Incorrect assumption | Correct interpretation and why it matters | Level |
 |---:|---|---|---|
-| 1 | AWS creates customer managed policies | The customer creates and owns them | CPP |
+| 1 | AWS creates customer managed policies | The customer creates and owns them | CCP |
 | 2 | AWS managed policies have no versions | AWS creates and controls their managed-policy versions | Both |
 | 3 | Inline policies use managed-policy versioning | They are embedded documents without saved managed-policy versions | Both |
 | 4 | JSON `Version` identifies saved revision | `2012-10-17` is language semantics; `v1` is a saved revision | Both |
 | 5 | Customer managed is always best practice | Choose from reuse, ownership, scope, and lifecycle requirements | Both |
-| 6 | Creating a policy grants permission | It must be attached as permissions; existence alone grants nothing | CPP |
-| 7 | Managed policies attach only to users | They attach to users, groups, and roles | CPP |
-| 8 | One managed policy has one attachment | It can be reused within its account | CPP |
+| 6 | Creating a policy grants permission | It must be attached as permissions; existence alone grants nothing | CCP |
+| 7 | Managed policies attach only to users | They attach to users, groups, and roles | CCP |
+| 8 | One managed policy has one attachment | It can be reused within its account | CCP |
 | 9 | A default update affects only future attachments | Every existing attachment uses the new default after propagation | Both |
 | 10 | All saved versions are active | Exactly one default version is operative | Both |
 | 11 | Newest version is always default | Creation can leave it nondefault; admins can select an older version | SAA |
@@ -922,13 +922,13 @@ Confirm actual caller, action, resource ARN, default version, attachment, condit
 These 30 questions are original study material, not official or recalled AWS exam questions.
 
 <details>
-<summary>Q1 · CPP · What is a customer managed policy?</summary>
+<summary>Q1 · CCP · What is a customer managed policy?</summary>
 
 **Answer:** A standalone reusable IAM policy created and administered by the customer in one AWS account. It differs from an AWS managed policy (AWS-owned) and an inline policy (embedded in one identity).
 </details>
 
 <details>
-<summary>Q2 · CPP · Which identities can receive a customer managed policy as permissions?</summary>
+<summary>Q2 · CCP · Which identities can receive a customer managed policy as permissions?</summary>
 
 - A. IAM users only
 - B. IAM users and roles only
@@ -939,13 +939,13 @@ These 30 questions are original study material, not official or recalled AWS exa
 </details>
 
 <details>
-<summary>Q3 · CPP · Does creating a policy immediately grant access?</summary>
+<summary>Q3 · CCP · Does creating a policy immediately grant access?</summary>
 
 **Answer: No.** It must be attached as a permissions policy to an eligible identity; a boundary assignment limits rather than grants. Authentication and complete evaluation still follow.
 </details>
 
 <details>
-<summary>Q4 · CPP · Who controls an AWS managed policy's updates?</summary>
+<summary>Q4 · CCP · Who controls an AWS managed policy's updates?</summary>
 
 - A. Every attaching customer
 - B. AWS
@@ -956,13 +956,13 @@ These 30 questions are original study material, not official or recalled AWS exa
 </details>
 
 <details>
-<summary>Q5 · CPP · Which policy is embedded one-to-one in a user, group, or role?</summary>
+<summary>Q5 · CCP · Which policy is embedded one-to-one in a user, group, or role?</summary>
 
 **Answer:** An inline policy. Customer and AWS managed policies are standalone and reusable.
 </details>
 
 <details>
-<summary>Q6 · CPP · Several roles need identical custom access. Best baseline?</summary>
+<summary>Q6 · CCP · Several roles need identical custom access. Best baseline?</summary>
 
 - A. Copy inline policy into each role
 - B. One customer managed policy attached to each role
@@ -973,19 +973,19 @@ These 30 questions are original study material, not official or recalled AWS exa
 </details>
 
 <details>
-<summary>Q7 · CPP · What does `Effect: "Deny"` do by itself?</summary>
+<summary>Q7 · CCP · What does `Effect: "Deny"` do by itself?</summary>
 
 **Answer:** It blocks matching access that another source might allow; it grants nothing. A policy containing only denies provides no positive permission.
 </details>
 
 <details>
-<summary>Q8 · CPP · Is a customer managed policy automatically least privilege?</summary>
+<summary>Q8 · CCP · Is a customer managed policy automatically least privilege?</summary>
 
 **Answer: No.** Customer ownership permits precision but also permits broad wildcards. Least privilege requires justified actions, resources, conditions, and review.
 </details>
 
 <details>
-<summary>Q9 · CPP · Which element normally contains `2012-10-17`?</summary>
+<summary>Q9 · CCP · Which element normally contains `2012-10-17`?</summary>
 
 - A. Managed-policy ID
 - B. JSON policy-language `Version`
@@ -996,7 +996,7 @@ These 30 questions are original study material, not official or recalled AWS exa
 </details>
 
 <details>
-<summary>Q10 · CPP · What is the main risk of a central shared update?</summary>
+<summary>Q10 · CCP · What is the main risk of a central shared update?</summary>
 
 **Answer:** Blast radius. The new default affects every attachment, so an error can remove required access or broadly expand it.
 </details>
@@ -1252,7 +1252,7 @@ The original reusable-template analogy, customer ownership, team examples, centr
 
 The upgrade corrected the false statement that AWS managed policies have no versions, replaced the malformed comparison table, removed the claim that customer managed policies are categorically best, and added standalone ARNs, default/version behavior, rollback, attachments, boundaries, JSON semantics, complete evaluation, multi-account design, defensive administration, validation, questions, and references.
 
-The provenance comment was preserved exactly. Its referenced `docs/reorganization/PHASE-4-CANONICAL-SOURCE-MAP.csv` was not found in the repository audit, so this guide does not claim that file was verified.
+The provenance comment was preserved exactly. On 2026-11-06, the referenced map was verified at the learning-content root as `learnings/docs/reorganization/PHASE-4-CANONICAL-SOURCE-MAP.csv`. Its row for this canonical lesson records two consolidated source paths and marks the content verified. The comment is provenance metadata rather than a lesson-relative navigation link.
 
 ---
 
@@ -1320,10 +1320,10 @@ Policy quotas, service actions/resource types/condition keys, IAM Identity Cente
 
 <div align="center">
 
-![CPP](https://img.shields.io/badge/CPP-Custom%2C%20reusable%2C%20customer--controlled-2EA44F?style=for-the-badge)
+![CCP](https://img.shields.io/badge/CCP-Custom%2C%20reusable%2C%20customer--controlled-2EA44F?style=for-the-badge)
 
 ![SAA](https://img.shields.io/badge/SAA-Version%2C%20validate%2C%20limit%2C%20deploy%2C%20audit-0969DA?style=for-the-badge)
 
-**For CPP, recognize customer managed policies as reusable custom permissions. For SAA, design their JSON, versions, attachments, boundaries, rollout, and multi-account lifecycle within the complete authorization model.**
+**For CCP, recognize customer managed policies as reusable custom permissions. For SAA, design their JSON, versions, attachments, boundaries, rollout, and multi-account lifecycle within the complete authorization model.**
 
 </div>
